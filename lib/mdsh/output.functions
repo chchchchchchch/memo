@@ -122,10 +122,21 @@
 # ----
   sed -n "/<!--.*${FOOTMARK}.*-->$/,\$p" $OUTPUT >> ${TMPID}.htmltmp
 
-# MOVE IN PLACE
+# START OUTPUT
 # ----
-  mv ${TMPID}.htmltmp $OUTPUT 
 
+  if [ -f ${TMPID}.head ]
+  then  cat ${TMPID}.head   > ${OUTPUT}
+  else  echo "<html><body>" > ${OUTPUT}
+  fi
+
+# INSERT CONENT
+# ----
+  cat ${TMPID}.htmltmp >> $OUTPUT 
+
+# CLOSE OUTPUT
+# ----
+  echo "</body></html>"      >> $OUTPUT
 
  }
 # .-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-. #

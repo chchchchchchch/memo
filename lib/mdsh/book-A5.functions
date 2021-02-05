@@ -17,9 +17,9 @@ function PDFXAUTHOR() { THISPDFXAUTHOR="$*"; }
 function PDFXORG()    { THISPDFXORG="$*";    }
 function MKPDFXCOMPLIANT() {
 
-  ICC="$INCLUDEPATH/../lib/icc/FOGRA39L.icc"
+  ICC="$SHDIR/../icc/FOGRA39L.icc"
 
-  pdfxrequired() {
+  pdfxRequired() {
 
    # PDF/X COMPLIANCY
    # ---------------- #
@@ -48,14 +48,14 @@ function MKPDFXCOMPLIANT() {
  # ------------------------------------------------------------------------- # 
  # DO IT AT THE END 
  # ------------------------------------------------------------------------- # 
-   if [ "$OUTPUTFORMAT" == pdf ];then
-
-       # ADD ONLY ONCE 
-         if [ `echo $preOutput | grep modTeX | wc -l ` -lt 1 ];then
-               preOutput="$preOutput pdfxrequired"
-         fi
+   if [ "$OUTPUTFORMAT" == pdf ]
+   then # ADD ONLY ONCE 
+        if [ `echo $preOutput   | #
+              grep pdfxRequired | #
+              wc -l ` -lt 1 ]     #
+        then  preOutput="$preOutput pdfxRequired"
+        fi
    fi
-
 }
 
 # --------------------------------------------------------------------------- #
@@ -100,8 +100,8 @@ function ADD2PREAMBLE() { echo "$*" >> ${TMPID}.preamble ; }
         echo '\newcount\vs
               \newcount\vsi
               \newcommand\cleartofour{
-               \mbox{}\clearpage
                \pagestyle{empty}
+               \mbox{}\clearpage
                \vs\thepage
                \advance\vs by 3
                \vsi\vs
@@ -114,9 +114,11 @@ function ADD2PREAMBLE() { echo "$*" >> ${TMPID}.preamble ; }
 
 function CLOSEBOOK() {
 
-   write2src "\cleartofour"
+   if   [ "$OUTPUTFORMAT" == pdf ]
+   then    write2src "\cleartofour"
+   fi
 
- }
+}
 
 # --------------------------------------------------------------------------- #
 

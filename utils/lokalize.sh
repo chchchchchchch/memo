@@ -4,8 +4,10 @@
 # TODO: -f => force download
 #       check for README/LICENSE AT REMOTE LOCATION
 # ====================================================================== #
-  SRCDIR=`echo $* | grep "/" | head -n 1`
-  NONINTERACTIVE=`echo $* | grep -- "-q" | wc -l`
+  SRCDIR=`echo $* | sed 's/ /\n/g' | #
+          grep "/" | head -n 1`      #
+  NONINTERACTIVE=`echo $* | sed 's/ /\n/g' | #
+                  grep '^-' | grep -- "-q" | wc -l`
 # ---------------------------------------------------------------------- #
   if [ ! -d $SRCDIR ]
    then echo "----"; echo "$SRCDIR NOT A DIRECTORY."
@@ -54,9 +56,9 @@
                 grep " -*> " |        # SELECT IF '-(--)>'
                 wc -l` -gt 0 ]; then  # COUNT AND CHECK
                 LOKALNAME=`echo $REMOTE     |      # ECHO $REMOTE
-                           sed 's/^.* -*> //'`     # CUT AFTER ->
+                           sed 's/^.* -*>[ ]*//'`  # CUT AFTER ->
                   REMOTE=`echo $REMOTE      |      # ECHO $REMOTE
-                          sed 's/ -*> .*$//'`      # CUT BEFORE ->
+                          sed 's/[ ]*-*> .*$//'`   # CUT BEFORE ->
           else  LOKALNAME=`curl -sIL "$REMOTE"   | # CHECK URL
                            grep "^Location"      | # EXTRACT LOCATION
                            rev                   | # REWIND 
