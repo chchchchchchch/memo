@@ -10,9 +10,9 @@
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
 % DOCUMENTCLASS: [8pt,cleardoubleempty]{scrbook}
 % --------------------------------------------------------------------------- %
+% USEPACKAGE: 181008_basic
 % USEPACKAGE: ../lib/tex/conditions
 % USEPACKAGE: ../lib/tex/lstlanguages
-% USEPACKAGE: 181008_basic
 % --------------------------------------------------------------------------- %
 % PDFXTITLE: Testing a Basic mdsh Setup
 % PDFXORG: LAFKON Publishing
