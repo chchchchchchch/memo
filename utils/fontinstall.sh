@@ -27,16 +27,14 @@
   fi
 # ----
   REMOTESRC=`echo $* | sed 's/ /\n/g' | grep -v -- "^-" | tail -n 1`
-  if [ "$REMOTESRC" != "" ]
+  if [ -f $REMOTESRC ] 
   then REMOTEGET="$TMPDIR/"`basename $REMOTESRC`
+       cp $REMOTESRC $REMOTEGET
+  elif [ "$REMOTESRC" != "" ]
+  then REMOTEGET="$TMPDIR/"`basename $REMOTESRC`
+       wget -q $REMOTESRC -O $REMOTEGET
   else exit 0;
   fi
-
-
-# --------------------------------------------------------------------------- #
-# DOWNLOAD REMOTE SRC
-# --------------------------------------------------------------------------- #
-  wget -q $REMOTESRC -O $REMOTEGET
 # --------------------------------------------------------------------------- #
   if   [ `echo $* | sed 's/ /\n/g' | grep -- "^--tex" | wc -l` -gt 0 ]
   then    MODUS="TEX"
@@ -69,11 +67,11 @@
                TEXMFHOME=`kpsexpand \\$TEXMFHOME`
                cd -
           fi
-        
+        # --
           if [ -f $TMPDIR/tmp.zip ];then
                unzip -qo -u -C $TMPDIR/tmp.zip "*.zip" -d $TMPDIR
-               rm $TMPDIR/tmp.zip
                unzip -qo -u -C $TMPDIR/*.zip "TEXMF/*" -d $TMPDIR
+               rm $TMPDIR/tmp.zip
                rsync -a ${TMPDIR}/TEXMF/ $TEXMFHOME
                if [ -d "${TMPDIR}/TEXMF" ]
                then rm -rf ${TMPDIR}/TEXMF ; rm $TMPDIR/*.zip
@@ -90,18 +88,18 @@
         # ----------------------------------------------------------- #
           sort -u -o $UPDMAP $UPDMAP
         # ----------------------------------------------------------- #
-          updmap
+          updmap-user # https://tex.stackexchange.com/q/255709
         # ----------------------------------------------------------- #
    fi # ============================================================= #
  
  # -------------------------------------------------------------------- #
    if [ "$MODUS" == TTF ] # ========================================= #
-   then   mkdir -p ~/.fonts/murxx
+   then   mkdir -p ~/.fonts/fontinstall
         # ----------------------------------------------------------- #
           ISZIP=`echo $REMOTEGET | grep ".zip$" | wc -l`
           if [ "$ISZIP" == 1 ]
-          then unzip -qo $REMOTEGET -d ~/.fonts/murxx
-          else cp $REMOTEGET ~/.fonts/murxx
+          then unzip -qo $REMOTEGET -d ~/.fonts/fontinstall
+          else cp $REMOTEGET ~/.fonts/fontinstall
           fi
         # ----------------------------------------------------------- #
           rm $REMOTEGET
@@ -109,4 +107,3 @@
  # -------------------------------------------------------------------- #
 
 exit 0;
-
