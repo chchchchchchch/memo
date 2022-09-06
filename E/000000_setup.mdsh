@@ -7,24 +7,17 @@
 % -> bibtex references: http://freeze.sh/etherpad/bibref
 % -> markdown reference: http://daringfireball.net/projects/markdown
 
-% DOCUMENTCLASS: [8pt,cleardoubleempty]{scrbook}
-
-% --------------------------------------------------------------------------- %
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% DOCUMENTCLASS: [8pt,cleardoubleempty]{scrbook}
+% --------------------------------------------------------------------------- %
+% USEPACKAGE: ../lib/tex/conditions
+% USEPACKAGE: ../lib/tex/lstlanguages
+% USEPACKAGE: 171126_Basic
+% --------------------------------------------------------------------------- %
 % PDFXTITLE: Testing a Basic mdsh Setup
 % PDFXORG: LAFKON Publishing
 % PDFXAUTHOR: LAFKON Publishing
 % MKPDFXCOMPLIANT:
-% --------------------------------------------------------------------------- %
-% USEPACKAGE: ../lib/tex/conditions
-% USEPACKAGE: ../lib/tex/srccode
-%!USEPACKAGE: tgsoguide
-% USEPACKAGE: 171126_Basic
-% --------------------------------------------------------------------------- %
-%!EXTENDFUNCTIONS: ../lib/mdsh/keywordize.functions
-% --------------------------------------------------------------------------- %
-%!EXTENDFUNCTIONS: ../lib/mdsh/bibref.functions
-%!BIBREF: https://pad.constantvzw.org/p/observatory.bib/export/txt
 % --------------------------------------------------------------------------- %
 
 dklsa Armenviertel mdslamdsl kadk kdöad kdölak dkasdla kadsosak
