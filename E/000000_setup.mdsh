@@ -8,6 +8,7 @@
 % -> markdown reference: http://daringfireball.net/projects/markdown
 
 % EXTENDFUNCTIONS: ../lib/mdsh/book-A5.functions
+% EXTENDFUNCTIONS: ../lib/mdsh/bibref.functions
 % DOCUMENTCLASS: [8pt,cleardoubleempty]{scrbook}
 % --------------------------------------------------------------------------- %
 % USEPACKAGE: 181008_basic
@@ -19,6 +20,8 @@
 % PDFXAUTHOR: LAFKON Publishing
 % MKPDFXCOMPLIANT:
 % --------------------------------------------------------------------------- %
+% BIBREF: http://freeze.sh/etherpad/export/_/references.bib 
+
 
 dklsa Armenviertel mdslamdsl kadk kdöad kdölak dkasdla kadsosak
 dadskölasköa kmdsa kda kdald akmdöö amdslamdlweqop powqepqpqweo
