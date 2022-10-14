@@ -149,10 +149,10 @@
   # ----------------------------------------------------------------------- #
   # DEFINITIONS SPECIFIC TO OUTPUT
   # ----------------------------------------------------------------------- #
-    PANDOCACTION="pandoc --ascii         \
-                         --wrap=none      \
-                         --listings        \
-                         -r markdown_strict \
+    PANDOCACTION="pandoc --ascii               \
+                         --wrap=none            \
+                         --listings              \
+                         -r markdown_strict+smart \
                          -w latex"
   # ----------------------------------------------------------------------- #
   # FOOTNOTES
