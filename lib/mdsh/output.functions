@@ -149,7 +149,11 @@
   # ----------------------------------------------------------------------- #
   # DEFINITIONS SPECIFIC TO OUTPUT
   # ----------------------------------------------------------------------- #
-    PANDOCACTION="pandoc --ascii --wrap=none --listings -r markdown -w latex"
+    PANDOCACTION="pandoc --ascii         \
+                         --wrap=none      \
+                         --listings        \
+                         -r markdown_strict \
+                         -w latex"
   # ----------------------------------------------------------------------- #
   # FOOTNOTES
   # \footnote{the end is near, the text is here}
